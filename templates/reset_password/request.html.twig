@@ -7,8 +7,7 @@
         <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
     {% endfor %}
     <main class="form-signin w-100 m-auto">
-    <h4 class="mt-4"><strong>Reset your password</strong></h4>
-
+    <h4 class="mb-3 fw-normal"><strong>Reset your password&nbsp;<i class="bi bi-person-fill-lock"></i></strong></h4>
     {{ form_start(requestForm) }}
         {{ form_row(requestForm.email) }}
         <div>
@@ -16,8 +15,7 @@
                 We will send you a link to reset your password.
             </small></h6>
         </div>
-
-        <button class="btn btn-warning">Send password reset email</button>
+        <button class="btn btn-warning w-100 py-2">Send password reset email</button>
     {{ form_end(requestForm) }}
     </main>
 {% endblock %}
