@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CoordinateRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CoordinateRepository::class)]
 class Coordinate
@@ -11,21 +12,30 @@ class Coordinate
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Assert\Positive()]
     private ?int $id = null;
 
     #[ORM\Column]
+    /**
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    #[Assert\DateTime]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 50)]
+    #[Assert\NotNull()]
     private ?string $address = null;
 
     #[ORM\Column(length: 5)]
+    #[Assert\NotNull()]
     private ?string $zip = null;
 
     #[ORM\Column(length: 25)]
+    #[Assert\NotNull()]
     private ?string $city = null;
 
     #[ORM\Column(length: 10)]
+    #[Assert\NotNull()]
     private ?string $phone = null;
 
     #[ORM\OneToOne(inversedBy: 'coordinate', cascade: ['persist', 'remove'])]
@@ -33,6 +43,7 @@ class Coordinate
     private ?User $user = null;
 
     #[ORM\Column]
+    #[Assert\NotNull()]
     private ?bool $isCompleted = false;
 
     public function getId(): ?int

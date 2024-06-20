@@ -19,15 +19,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    protected ?int $id;
+    #[Assert\Positive]
+    private ?int $id;
 
-    #[ORM\Column(type: 'string' ,length: 180, unique: true)]
+    #[ORM\Column(type:'string' ,length: 180, unique: true)]
+    #[Assert\Email(
+        message: 'The email {{ value }} is not a valid email.',
+    )]
     private ?string $email;
 
     /**
      * @var list<string> The user roles
      */
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private array $roles = [];
 
     private ?string $plainPassword= null;
@@ -37,12 +42,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?string $password;
 
     #[ORM\Column]
+    #[Assert\NotNull()]
     private bool $isVerified = false;
 
     #[ORM\Column]
+    /**
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    #[Assert\DateTime]
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
