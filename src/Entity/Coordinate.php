@@ -33,7 +33,7 @@ class Coordinate
     private ?User $user = null;
 
     #[ORM\Column]
-    private ?bool $isCompleted = null;
+    private ?bool $isCompleted = false;
 
     public function getId(): ?int
     {

@@ -19,7 +19,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id;
+    protected ?int $id;
 
     #[ORM\Column(type: 'string' ,length: 180, unique: true)]
     private ?string $email;
