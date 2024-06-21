@@ -34,14 +34,6 @@ class RegistrationFormType extends AbstractType
                     new Email(message: 'The email {{ value }} is not a valid email.')
                 ])
              ]])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
-            ])
             ->add('plainPassword', PasswordType::class, [
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password','placeholder'=>'between 10 and 12 characters', 
@@ -56,6 +48,14 @@ class RegistrationFormType extends AbstractType
                             htmlPattern: '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{10,12}$'
                         )
                     ])
+                ],
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'You should agree to our terms.',
+                    ]),
                 ],
             ])
             ->add('register', SubmitType::class,['attr'=>['class'=>'btn btn-warning w-100 py-2']])

@@ -30,9 +30,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setCreatedAt(new \DateTimeImmutable())
             // encode the plain password
-            ->setPassword(
+            $user->setPassword(
             $hasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()

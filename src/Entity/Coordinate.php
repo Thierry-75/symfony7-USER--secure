@@ -16,10 +16,6 @@ class Coordinate
     private ?int $id = null;
 
     #[ORM\Column]
-    /**
-     * @var string A "Y-m-d H:i:s" formatted value
-     */
-    #[Assert\DateTime]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 50)]
@@ -34,7 +30,7 @@ class Coordinate
     #[Assert\NotNull()]
     private ?string $city = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(length: 14)]
     #[Assert\NotNull()]
     private ?string $phone = null;
 
