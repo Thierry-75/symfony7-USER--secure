@@ -32,7 +32,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var list<string> The user roles
      */
     #[ORM\Column]
-    #[Assert\NotBlank()]
     private array $roles = [];
 
     private ?string $plainPassword= null;
@@ -42,7 +41,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank()]
     private ?string $password;
 
     #[ORM\Column]

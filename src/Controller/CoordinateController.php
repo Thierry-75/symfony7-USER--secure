@@ -28,6 +28,7 @@ class CoordinateController extends AbstractController
             }
             if($form_coordinate->isSubmitted() && $form_coordinate->isValid()){
                 $coordinate->setUser($this->getUser());
+                $coordinate->setUpdatedAt(new \DateTimeImmutable());
                 $coordinate->setCompleted(true);
                 $em->persist($coordinate);
                 $em->flush();

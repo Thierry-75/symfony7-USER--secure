@@ -46,6 +46,18 @@ class Coordinate
     #[Assert\NotNull()]
     private ?bool $isCompleted = false;
 
+    #[ORM\Column(length: 30)]
+    #[Assert\NotNull()]
+    private ?string $nom = null;
+
+    #[ORM\Column(length: 30)]
+    #[Assert\NotNull()]
+    private ?string $prenom = null;
+
+    #[ORM\Column(length: 30)]
+    #[Assert\NotNull()]
+    private ?string $pseudo = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -131,6 +143,42 @@ class Coordinate
     public function setCompleted(bool $isCompleted): static
     {
         $this->isCompleted = $isCompleted;
+
+        return $this;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): static
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): static
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
