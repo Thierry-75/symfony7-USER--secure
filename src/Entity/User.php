@@ -24,7 +24,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type:'string' ,length: 180, unique: true)]
     private ?string $email;
-
     /**
      * @var list<string> The user roles
      */
@@ -32,8 +31,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private array $roles = [];
 
     private ?string $plainPassword= null;
- 
-
     /**
      * @var string The hashed password
      */

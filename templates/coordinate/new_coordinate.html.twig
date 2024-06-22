@@ -3,8 +3,8 @@
 {% block title %}Hello CoordinateController!{% endblock %}
 
 {% block body %}
-{{ form(form_coordinate) }}
-
- 
+	{{ form_errors(form_coordinate) }}
+		{{ form_start(form_coordinate, {'attr': {'novalidate': 'novalidate'}}) }}
+		{{ form_end(form_coordinate) }}
 </div>
 {% endblock %}

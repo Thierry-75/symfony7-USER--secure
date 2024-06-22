@@ -29,8 +29,8 @@ class RegistrationFormType extends AbstractType
             ->add('email',EmailType::class, ['attr'=>['class'=>'form-floating','autofocus'=>true],'label'=>'Email',
              'constraints'=>[
                 new Sequentially([
-                    new Length(['max'=>180,'maxMessage'=>'Your email should be at least {{ limit }} characters']),
                     new NotBlank(message: "Please enter your email"),
+                    new Length(['max'=>180,'maxMessage'=>'Your email should be at least {{ limit }} characters']),
                     new Email(message: 'The email {{ value }} is not a valid email.')
                 ])
              ]])
