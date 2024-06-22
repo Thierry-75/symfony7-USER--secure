@@ -54,6 +54,9 @@ class Coordinate
     #[Assert\NotNull()]
     private ?string $pseudo = null;
 
+    #[ORM\OneToOne(mappedBy: 'coordinate', cascade: ['persist', 'remove'])]
+    private ?Avatar $avatar = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -175,6 +178,23 @@ class Coordinate
     public function setPseudo(string $pseudo): static
     {
         $this->pseudo = $pseudo;
+
+        return $this;
+    }
+
+    public function getAvatar(): ?Avatar
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar(Avatar $avatar): static
+    {
+        // set the owning side of the relation if necessary
+        if ($avatar->getCoordinate() !== $this) {
+            $avatar->setCoordinate($this);
+        }
+
+        $this->avatar = $avatar;
 
         return $this;
     }

@@ -3,9 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Coordinate;
-use PhpParser\Node\Stmt\Label;
+use App\Entity\Avatar;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Event\PostSubmitEvent;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -102,6 +103,12 @@ class CoordinateType extends AbstractType
                     )
                 ])
             ]
+            ])
+            ->add('avatar',FileType::class, [
+                'label'=>false,
+                'multiple'=>false,
+                'mapped'=>false,
+                'required' =>false
             ])
             ->add('submit', SubmitType::class,['attr'=>['class'=>'btn btn-warning'],'label'=>'Register'])
             ->addEventListener(FormEvents::POST_SUBMIT, $this->addDate(...));
