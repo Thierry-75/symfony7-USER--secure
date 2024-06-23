@@ -110,7 +110,7 @@ class CoordinateType extends AbstractType
                 'mapped'=>false,
                 'required' =>true
             ])
-            ->add('submit', SubmitType::class,['attr'=>['class'=>'btn btn-warning'],'label'=>'Register'])
+            ->add('submit', SubmitType::class,['attr'=>['class'=>'btn btn-info'],'label'=>'Register'])
             ->addEventListener(FormEvents::POST_SUBMIT, $this->addDate(...));
         ;
     }

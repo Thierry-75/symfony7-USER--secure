@@ -58,7 +58,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('register', SubmitType::class,['attr'=>['class'=>'btn btn-warning w-100 py-2']])
+            ->add('register', SubmitType::class,['attr'=>['class'=>'btn btn-info w-100 py-2']])
             ->addEventListener(FormEvents::POST_SUBMIT,$this->addDate(...))
             ;
     }
