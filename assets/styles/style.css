@@ -1,6 +1,7 @@
 html,
 body {
   height: 100%;
+  height: -webkit-fill-available;
 }
 
 .container {
@@ -29,3 +30,4 @@ body {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+

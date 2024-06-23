@@ -1,10 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CoordinateController!{% endblock %}
+{% block title %}Coordinate{% endblock %}
 
 {% block body %}
-	{{ form_errors(form_coordinate) }}
-		{{ form_start(form_coordinate, {'attr': {'novalidate': 'novalidate'}}) }}
-		{{ form_end(form_coordinate) }}
-</div>
+		<div class="container" id="coordinate_new">
+		<div class="row mb-4">
+			<div class="col-md-2">
+				{% include('coordinate/side.html.twig') %}
+			</div>
+			<div class="col-md-10">
+				{% include('coordinate/coordinate_form.html.twig') %}
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

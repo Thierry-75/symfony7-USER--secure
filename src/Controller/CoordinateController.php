@@ -51,4 +51,32 @@ class CoordinateController extends AbstractController
         }
         return $this->render('/coordinate/new_coordinate.html.twig', ['form_coordinate'=>$form_coordinate->createView()]);     
     }
+    #[Route('/coordinate/edit/{id}',name:'app_coordinate.edit',methods:['GET','POST'])]
+    public function edit(Coordinate $coordinate,EntityManagerInterface $em,Request $request,ValidatorInterface $validator, ImageService $imageService): Response
+    {
+        if($this->getUser() == null){
+            return $this->redirectToRoute('app_login');
+        }
+        $form_coordinate = $this->createForm(CoordinateType::class,$coordinate);
+        $form_coordinate->handleRequest($request);
+        if($request->isMethod('POST')){
+            $errors = $validator->validate($coordinate);
+            if(count($errors)>0){
+                return $this->render('/coordinate/edit_coordinate.html.twig', ['form_coordinate'=> $form_coordinate->createView(),'errors' => $errors]);
+            }
+            if($form_coordinate->isSubmitted() && $form_coordinate->isValid()){
+                $avatar = $form_coordinate->get('avatar')->getData();
+                $folder = 'avatars';
+                $fichier = $imageService->add($avatar,$folder,36,36);
+                $img = new Avatar();
+                $img->setName($fichier);
+                $coordinate->setAvatar($img);
+                $em->persist($coordinate);
+                $em->flush();
+                $this->addFlash('success','Votre profil a été modifié !');
+                return $this->redirectToRoute('app_main');
+            }
+        }
+        return $this->render('/coordinate/edit_coordinate.html.twig',['form_coordinate'=> $form_coordinate->createView()]);
+    }
 }

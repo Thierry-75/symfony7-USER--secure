@@ -24,10 +24,9 @@ require('bootstrap');
 $(document).ready(function() {
     $('[data-toggle="popover"]').popover();
 });
-//const $ = require('jquery');
-/*On sélectionne tous les éléments avec un attribut data-toggle="popover"*/
 
-/*On sélectionne tous les éléments avec un attribut data-toggle="tooltip"*/
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
+
+

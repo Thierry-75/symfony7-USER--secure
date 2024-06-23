@@ -34,7 +34,7 @@ class CoordinateType extends AbstractType
                     )
                 ])
             ]])
-            ->add('prenom',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Firstname','label_attr'=> ['class'=>'form-label mt-4'],
+            ->add('prenom',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Firstname','label_attr'=> ['class'=>'form-label mt-2'],
             'constraints'=> [
                 new Sequentially([
                     new NotBlank(message: 'Please enter your firstname'),
@@ -45,7 +45,7 @@ class CoordinateType extends AbstractType
                     )
                 ])
             ]])
-            ->add('pseudo',TextType::class, ['attr'=>['class'=>'form-control'],'label'=>'Pseudo','label_attr'=>['class'=>'form-label mt-4'],
+            ->add('pseudo',TextType::class, ['attr'=>['class'=>'form-control'],'label'=>'Pseudo','label_attr'=>['class'=>'form-label mt-2'],
             'constraints'=> [
                 new Sequentially([
                     new NotBlank(message: 'Please enter your pseudo'),
@@ -57,7 +57,7 @@ class CoordinateType extends AbstractType
                 ])
             ]
             ])
-            ->add('address',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Address','label_attr'=>['class'=>'form-label mt-4'],
+            ->add('address',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Address','label_attr'=>['class'=>'form-label mt-2'],
             'constraints'=> [
                 new Sequentially([
                     new NotBlank(message: 'Please enter your address'),
@@ -69,7 +69,7 @@ class CoordinateType extends AbstractType
                 ])
             ]
             ])
-            ->add('zip',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Zip','label_attr'=>['class'=>'form-label mt-4'],
+            ->add('zip',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'Zip','label_attr'=>['class'=>'form-label mt-2'],
             'constraints'=> [
                 new Sequentially([
                     new NotBlank(message: 'Please enter your zip code'),
@@ -81,7 +81,7 @@ class CoordinateType extends AbstractType
                 ])
             ]
             ])
-            ->add('city',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'City','label_attr'=>['class'=>'form-label mt-4'],
+            ->add('city',TextType::class,['attr'=>['class'=>'form-control'],'label'=>'City','label_attr'=>['class'=>'form-label mt-2'],
             'constraints'=> [
                 new Sequentially([
                     new NotBlank(message: 'Please enter your city'),
@@ -93,7 +93,7 @@ class CoordinateType extends AbstractType
                 ])
             ]
             ])
-            ->add('phone', TelType::class,['attr'=>['class'=>'form-control'],'label'=>'Phone','label_attr'=>['class'=>'form-label mt-4'],
+            ->add('phone', TelType::class,['attr'=>['class'=>'form-control'],'label'=>'Phone','label_attr'=>['class'=>'form-label mt-2 mb-2'],
             'constraints'=> [
                 new Sequentially([
                     new NotBlank(message: 'Please enter your phone number'),
@@ -104,13 +104,13 @@ class CoordinateType extends AbstractType
                 ])
             ]
             ])
-            ->add('avatar',FileType::class, [
+            ->add('avatar',FileType::class, [ 'attr'=>['class'=>'form-control mt-4'],
                 'label'=>false,
                 'multiple'=>false,
                 'mapped'=>false,
                 'required' =>true
             ])
-            ->add('submit', SubmitType::class,['attr'=>['class'=>'btn btn-info'],'label'=>'Register'])
+            ->add('submit', SubmitType::class,['attr'=>['class'=>'btn btn-info mt-4'],'label'=>'Register'])
             ->addEventListener(FormEvents::POST_SUBMIT, $this->addDate(...));
         ;
     }
