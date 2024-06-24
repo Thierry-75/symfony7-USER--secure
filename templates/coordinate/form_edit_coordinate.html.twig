@@ -1,0 +1,55 @@
+{{ form_errors(form_coordinate) }}
+{{ form_start(form_coordinate, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="form-group">
+	{{ form_label(form_coordinate.nom) }}
+	{{ form_widget(form_coordinate.nom) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.nom) }}
+	</div>
+</div>
+<div class="form-group">
+	{{ form_label(form_coordinate.prenom) }}
+	{{ form_widget(form_coordinate.prenom) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.prenom) }}
+	</div>
+</div>
+<div class="form-group">
+	{{ form_label(form_coordinate.pseudo) }}
+	{{ form_widget(form_coordinate.pseudo) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.pseudo) }}
+	</div>
+</div>
+<div class="form-group">
+	{{ form_label(form_coordinate.address) }}
+	{{ form_widget(form_coordinate.address) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.address) }}
+	</div>
+</div>
+<div class="form-group">
+	{{ form_label(form_coordinate.zip) }}
+	{{ form_widget(form_coordinate.zip) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.zip) }}
+	</div>
+</div>
+<div class="form-group">
+	{{ form_label(form_coordinate.city) }}
+	{{ form_widget(form_coordinate.city) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.city) }}
+	</div>
+</div>
+<div class="form-group">
+	{{ form_label(form_coordinate.phone) }}
+	{{ form_widget(form_coordinate.phone) }}
+	<div class="form-error">
+		{{ form_errors(form_coordinate.phone) }}
+	</div>
+</div>
+
+
+<button type="submit" class="btn btn-info mt-4">{{ button_label | default('Reset') }}</button>
+{{ form_end(form_coordinate) }}

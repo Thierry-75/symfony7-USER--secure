@@ -1,5 +1,4 @@
 import './bootstrap.js';
-import './js/avatar.js';
 /*
  * Welcome to your app's main JavaScript file!
  *
@@ -28,5 +27,33 @@ $(document).ready(function() {
 $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
+
+  let links = document.querySelectorAll("[data-delete]");
+
+  for(let link of links)
+      {
+          link.addEventListener('click',function(e){
+              e.preventDefault();
+              
+              if(confirm('Delete this picture ?')){
+                  //requete ajax
+                  fetch(this.getAttribute("href"),{
+                      method: "DELETE",
+                      headers: {
+                          "X-Request-With": "XMLHttpRequest",
+                          "Content-Type": "application/json"
+                      },
+                      body: JSON.stringify({ "_token": this.dataset.token })
+                  }).then(response => response.json())
+                  .then( data => {
+                      if(data.success){
+                          this.parentElement.remove();
+                      }else{
+                          alert(data.error);
+                      }
+                  })
+              }
+          });
+      }
 
 

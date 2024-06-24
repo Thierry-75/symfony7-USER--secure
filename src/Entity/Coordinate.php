@@ -54,7 +54,7 @@ class Coordinate
     #[Assert\NotNull()]
     private ?string $pseudo = null;
 
-    #[ORM\OneToOne(mappedBy: 'coordinate', cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne(mappedBy: 'coordinate', cascade: ['persist'])]
     private ?Avatar $avatar = null;
 
     public function getId(): ?int

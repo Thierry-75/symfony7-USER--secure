@@ -7,7 +7,6 @@ use App\Entity\Avatar;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Event\PostSubmitEvent;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -108,9 +107,9 @@ class CoordinateType extends AbstractType
                 'label'=>false,
                 'multiple'=>false,
                 'mapped'=>false,
-                'required' =>true
+                'required' =>false
             ])
-            ->add('submit', SubmitType::class,['attr'=>['class'=>'btn btn-info mt-4'],'label'=>'Register'])
+            
             ->addEventListener(FormEvents::POST_SUBMIT, $this->addDate(...));
         ;
     }
