@@ -16,9 +16,12 @@ class Avatar
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\OneToOne(inversedBy: 'avatar')]
+    #[ORM\OneToOne(inversedBy: 'avatar',cascade:['persist','remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Coordinate $coordinate = null;
+
+    #[ORM\Column]
+    private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
     {
@@ -45,6 +48,18 @@ class Avatar
     public function setCoordinate(Coordinate $coordinate): static
     {
         $this->coordinate = $coordinate;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(\DateTimeImmutable $updatedAt): static
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

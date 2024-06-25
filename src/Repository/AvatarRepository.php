@@ -16,6 +16,8 @@ class AvatarRepository extends ServiceEntityRepository
         parent::__construct($registry, Avatar::class);
     }
 
+        
+
     //    /**
     //     * @return Avatar[] Returns an array of Avatar objects
     //     */

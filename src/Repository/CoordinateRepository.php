@@ -16,6 +16,14 @@ class CoordinateRepository extends ServiceEntityRepository
         parent::__construct($registry, Coordinate::class);
     }
 
+    public function findCoordinateByAvatar($id)
+    {
+        return $this->createQueryBuilder('c')
+        ->andWhere('c.id = :val')
+        ->setParameter('val',$id)
+        ->getQuery()
+        ->getResult();
+    }
     //    /**
     //     * @return Coordinate[] Returns an array of Coordinate objects
     //     */

@@ -111,7 +111,7 @@ class CoordinateEditType extends AbstractType
                     ])
                 ]
             ])
-            ->addEventListener(FormEvents::POST_SUBMIT, $this->addDate(...));;
+            ->addEventListener(FormEvents::POST_SUBMIT, $this->addDate(...));
     }
 
     public function addDate(PostSubmitEvent $event): void

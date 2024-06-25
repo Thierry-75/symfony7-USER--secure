@@ -1,0 +1,19 @@
+
+<div>
+  <fieldset>    
+    <input class="form-control mb-2" id="readOnlyInput" type="text" placeholder="{{ coordinate[0].prenom}}&nbsp;{{ coordinate[0].nom}}" readonly="">
+  </fieldset>
+    <fieldset>    
+    <input class="form-control" id="readOnlyInput" type="text" placeholder="{{ coordinate[0].address}}&nbsp;{{ coordinate[0].zip}} &nbsp;{{ coordinate[0].city}}" readonly="">
+  </fieldset>
+</div>
+{{ form_errors(form_avatar) }}
+{{ form_start(form_avatar, {'attr': {'novalidate': 'novalidate'}}) }}
+<div class="form-group">
+	{{ form_label(form_avatar.avatar) }}
+	{{ form_widget(form_avatar.avatar) }}
+	<div class="form-error">
+		{{ form_errors(form_avatar.avatar) }}
+	</div>
+</div>
+{{ form_end(form_avatar) }}
