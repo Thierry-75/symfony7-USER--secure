@@ -20,7 +20,7 @@ class Avatar
     #[ORM\JoinColumn(nullable: false)]
     private ?Coordinate $coordinate = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
     public function getId(): ?int
