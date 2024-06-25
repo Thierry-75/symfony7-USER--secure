@@ -32,8 +32,8 @@
           </div>
         </li>
       </ul>
-      <div class="d-flex">
-      				<ul class="navbar-nav me-auto">
+      <div class="d-flex ">
+      				<ul class="navbar-nav me-auto mr-5">
 					{% if app.user %}
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.coordinate.pseudo }}</a>
@@ -41,7 +41,7 @@
 								<a class="dropdown-item text-sm" href="{{ path('app_coordinate.edit', {id:app.user.id})}}">Modifier profil</a>
 								<a class="dropdown-item text-sm" href="{{ path('app_avatar.edit',{id:app.user.id})}}">Modifier Avatar</a>
 								{% if 'ROLE_ADMIN' in app.user.roles %}
-									<a class="dropdown-item text-sm" href="{{ path('admin_index')}}">Administration</a>
+									<a class="dropdown-item text-sm" href="#">Administration</a>
 								{% endif %}
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item text-sm" href="{{ path('app_logout')}}">Déconnexion</a>
@@ -64,9 +64,10 @@
 								</button>
 							</span>
 						</li>
+            <li>&nbsp;</li>
 					{% endif %}
 				</ul>
-
+&nbsp;&nbsp;&nbsp;&nbsp;
       </div>
     </div>
   </div>

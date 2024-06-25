@@ -2,6 +2,7 @@
 
 namespace App\Command;
 
+use App\Entity\Coordinate;
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -31,6 +32,13 @@ class CreateAdministratorCommand extends Command
         $this
             ->addArgument('email', InputArgument::OPTIONAL, 'Argument description')
             ->addArgument('password', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('nom', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('prenom', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('pseudo', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('phone', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('address', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('zip', InputArgument::OPTIONAL, 'Argument description')
+            ->addArgument('city', InputArgument::OPTIONAL, 'Argument description')
         ;
     }
 
@@ -48,6 +56,41 @@ class CreateAdministratorCommand extends Command
             $question = new Question('Quel est le mot de passe de '. $email. ' ?');
             $plainPassword = $helper->ask($input,$output,$question);
         }
+        $nom = $input->getArgument('nom');
+        if(!$nom){
+            $question = new Question('Quel est le nom de '. $email. ' ?');
+            $nom = $helper->ask($input,$output,$question);
+        }
+        $prenom = $input->getArgument('prenom');
+        if(!$prenom){
+            $question = new Question('Quel est le prenom de '. $email. ' ?');
+            $prenom = $helper->ask($input,$output,$question);
+        }
+        $pseudo = $input->getArgument('pseudo');
+        if(!$pseudo){
+            $question = new Question('Quel est le pseudo de '. $email. ' ?');
+            $pseudo = $helper->ask($input,$output,$question);
+        }
+        $phone = $input->getArgument('phone');
+        if(!$phone){
+            $question = new Question('Quel est le téléphone de '. $email. ' ?');
+            $phone = $helper->ask($input,$output,$question);
+        }
+        $address = $input->getArgument('address');
+        if(!$address){
+            $question = new Question('Quelle est l\'adresse de '. $email. ' ?');
+            $address = $helper->ask($input,$output,$question);
+        }
+        $zip = $input->getArgument('zip');
+        if(!$zip){
+            $question = new Question('Quelle est le code postal de '. $email. ' ?');
+            $zip = $helper->ask($input,$output,$question);
+        }
+        $city = $input->getArgument('city');
+        if(!$city){
+            $question = new Question('Quelle est l\'adresse de '. $email. ' ?');
+            $city = $helper->ask($input,$output,$question);
+        }
 
         $user = (new User())->setEmail($email)
                             ->setPlainPassword($plainPassword)
@@ -56,7 +99,18 @@ class CreateAdministratorCommand extends Command
                             ->setCreatedAt(new \DateTimeImmutable());
         $this->em->persist($user);
         $this->em->flush();
-
+        $coordinate = (new Coordinate())->setUser($user)
+                                        ->setUpdatedAt(new \DateTimeImmutable())
+                                        ->setAddress($address)
+                                        ->setZip($zip)
+                                        ->setCity($city)
+                                        ->setPhone($phone)
+                                        ->setNom($nom)
+                                        ->setPrenom($prenom)
+                                        ->setPseudo($pseudo)
+                                        ->setCompleted(true);
+        $this->em->persist($coordinate);
+        $this->em->flush();
         $io->success('The administrator has been create ');
 
         return Command::SUCCESS;
