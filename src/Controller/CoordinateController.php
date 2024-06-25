@@ -59,6 +59,8 @@ class CoordinateController extends AbstractController
         if($this->getUser() == null){
             return $this->redirectToRoute('app_login');
         }
+        $this->denyAccessUnlessGranted('coordinate_edit',$coordinate);
+        
         $form_coordinate = $this->createForm(CoordinateEditType::class,$coordinate);
         $form_coordinate->handleRequest($request);
         if($request->isMethod('POST')){
