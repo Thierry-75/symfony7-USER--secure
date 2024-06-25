@@ -36,7 +36,7 @@
       				<ul class="navbar-nav me-auto">
 					{% if app.user %}
 						<li class="nav-item dropdown">
-							<a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.email }}</a>
+							<a class="nav-link dropdown-toggle text-black" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ app.user.coordinate.pseudo }}</a>
 							<div class="dropdown-menu">
 								<a class="dropdown-item text-sm" href="{{ path('app_coordinate.edit', {id:app.user.id})}}">Modifier profil</a>
 								<a class="dropdown-item text-sm" href="{{ path('app_avatar.edit',{id:app.user.id})}}">Modifier Avatar</a>

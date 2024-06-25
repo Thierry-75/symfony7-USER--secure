@@ -52,7 +52,7 @@ class RegistrationController extends AbstractController
             );
 
             // do anything else you need here, like send an email
-
+            $this->addFlash('success','Confirm your email, please');
             return $this->redirectToRoute('app_main');
         }
 
