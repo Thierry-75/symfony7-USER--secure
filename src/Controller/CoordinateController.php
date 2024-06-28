@@ -18,12 +18,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class CoordinateController extends AbstractController
 {
     #[Route('/coordinate/new', name: 'app_coordinate.new',methods:['GET','POST'])]
-    public function new(Request $request,EntityManagerInterface $em, ValidatorInterface $validator,ImageService $imageService, Coordinate $coordinate): Response
+    public function new(Request $request,EntityManagerInterface $em, ValidatorInterface $validator,ImageService $imageService): Response
     {  
         if($this->getUser()== null){
         return $this->redirectToRoute('app_login');
         }
-         if($coordinate->getUser() !=null){
+         if($this->getUser()->getCoordinate() !=null){
             return $this->redirectToRoute('app_main');
          }
   
